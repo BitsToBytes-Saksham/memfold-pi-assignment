@@ -32,7 +32,6 @@ Follow these steps to run the project locally.
 
 ### 1. Clone the Repository
 
-```bash
 git clone [https://github.com/BitsToBytes-Saksham/memfold-pi-assignment.git](https://github.com/BitsToBytes-Saksham/memfold-pi-assignment.git)
 cd memfold-pi-assignment
 
