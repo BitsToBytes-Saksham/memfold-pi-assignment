@@ -30,27 +30,28 @@ This project replicates the distinct aesthetic of Pi, including the "Discover" f
 
 Follow these steps to run the project locally.
 
-### 1. Clone the Repository
-
+### Clone the Repository
+```bash
 git clone [https://github.com/BitsToBytes-Saksham/memfold-pi-assignment.git](https://github.com/BitsToBytes-Saksham/memfold-pi-assignment.git)
 cd memfold-pi-assignment
-
-Install Dependencies
-
+```
+### Install Dependencies
+```bash
 npm install
-
-Configure Environment Variables
+```
+### Configure Environment Variables
 Create a .env.local file in the root directory. You will need the API keys provided in the assignment documentation:
-
+```bash
 NEXT_PUBLIC_API_URL=[https://litellm.memfold.ai](https://litellm.memfold.ai)
 NEXT_PUBLIC_API_KEY=your_provided_api_key_here
-
-Run the Development Server
-
+```
+### Run the Development Server
+```bash
 npm run dev
+```
 Open http://localhost:3000 with your browser to see the result.
 
-📂 Project Structure
+### 📂 Project Structure
 app/page.tsx: Main entry point handling the Discover/Chat state and layout logic.
 
 app/api/chat/route.ts: Secure API proxy to handle communication with LiteLLM.
