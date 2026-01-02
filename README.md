@@ -1,4 +1,4 @@
-# Pi.ai Desktop Experience Clone
+# Pi.ai Desktop Experience 
 
 A pixel-perfect, responsive replication of the [Pi.ai](https://pi.ai) desktop interface, built as a Frontend Engineering assignment for Memfold.
 
@@ -52,12 +52,30 @@ npm run dev
 Open http://localhost:3000 with your browser to see the result.
 
 ### 📂 Project Structure
-app/page.tsx: Main entry point handling the Discover/Chat state and layout logic.
-
-app/api/chat/route.ts: Secure API proxy to handle communication with LiteLLM.
-
-components/InputArea.tsx: The complex floating input component with auto-resizing text area.
-
-components/chat/ChatBubble.tsx: Reusable message component with distinct styles for User vs. AI.
-
-components/Sidebar.tsx: Responsive navigation sidebar.
+```bash
+memfold-pi-assignment/
+├── app/
+│   ├── api/
+│   │   └── chat/
+│   │       └── route.ts        # LiteLLM API proxy
+│   ├── layout.tsx              # Global layout & typography
+│   ├── page.tsx                # Discover ↔ Chat flow controller
+│   └── globals.css             # Global styles
+│
+├── components/
+│   ├── chat/
+│   │   ├── ChatBubble.tsx      # User & assistant message UI
+│   │   └── TypingIndicator.tsx # Loading / typing animation
+│   ├── discover/
+│   │   ├── Discover.tsx        # Discover screen
+│   │   └── PromptCard.tsx      # Prompt suggestion cards
+│   ├── InputArea.tsx           # Floating input component
+│   └── Sidebar.tsx             # Responsive sidebar
+│
+├── public/
+├── .env.local
+├── package.json
+├── tailwind.config.ts
+├── postcss.config.js
+└── README.md
+```
