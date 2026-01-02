@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pi.ai Desktop Experience Clone
 
-## Getting Started
+A pixel-perfect, responsive replication of the [Pi.ai](https://pi.ai) desktop interface, built as a Frontend Engineering assignment for Memfold.
 
-First, run the development server:
+This project replicates the distinct aesthetic of Pi, including the "Discover" flow, the "New Chat" experience, and the signature floating input pill, powered by a real LLM backend via LiteLLM.
+
+## 🚀 Live Demo
+
+**[View the Live Application →](https://memfold-pi-assignment.vercel.app/)**
+
+## ✨ Key Features
+
+* **Pixel-Perfect UI:** Exact replication of Pi.ai's typography (Merriweather), warm beige color palette (`#F3F0E7`), and spacing.
+* **Floating Input Pill:** Custom implementation of the signature input bar that floats above the content with a gradient fade.
+* **Micro-Animations:** Smooth, spring-physics based message bubbles and page transitions using **Framer Motion**.
+* **Real-Time Chat:** Fully functional chat interface integrated with GPT-5.1 via the LiteLLM API (Optimistic UI updates).
+* **Responsive Design:** Mobile-first architecture with a collapsible sidebar and adaptive padding for Desktop, Tablet, and Mobile.
+* **Discover Flow:** Interactive topic selection that transitions seamlessly into a new chat context.
+
+## 🛠️ Tech Stack
+
+* **Framework:** Next.js 14 (App Router)
+* **Styling:** Tailwind CSS
+* **Language:** TypeScript
+* **Icons:** Lucide React
+* **Animations:** Framer Motion
+* **State Management:** React Hooks (`useState`, `useEffect`)
+
+## ⚙️ Getting Started
+
+Follow these steps to run the project locally.
+
+### 1. Clone the Repository
 
 ```bash
+git clone [https://github.com/BitsToBytes-Saksham/memfold-pi-assignment.git](https://github.com/BitsToBytes-Saksham/memfold-pi-assignment.git)
+cd memfold-pi-assignment
+
+Install Dependencies
+
+npm install
+
+Configure Environment Variables
+Create a .env.local file in the root directory. You will need the API keys provided in the assignment documentation:
+
+NEXT_PUBLIC_API_URL=[https://litellm.memfold.ai](https://litellm.memfold.ai)
+NEXT_PUBLIC_API_KEY=your_provided_api_key_here
+
+Run the Development Server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 with your browser to see the result.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📂 Project Structure
+app/page.tsx: Main entry point handling the Discover/Chat state and layout logic.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+app/api/chat/route.ts: Secure API proxy to handle communication with LiteLLM.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+components/InputArea.tsx: The complex floating input component with auto-resizing text area.
 
-## Learn More
+components/chat/ChatBubble.tsx: Reusable message component with distinct styles for User vs. AI.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+components/Sidebar.tsx: Responsive navigation sidebar.
