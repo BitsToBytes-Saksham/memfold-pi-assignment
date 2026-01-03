@@ -39,7 +39,7 @@ export default function InputArea({ onSend, disabled }: Props) {
   const isActive = value.trim().length > 0;
 
   return (
-    <div 
+    <div
       style={{
         position: 'fixed',
         bottom: 0,
@@ -51,7 +51,7 @@ export default function InputArea({ onSend, disabled }: Props) {
       }}
     >
       {/* Background gradient */}
-      <div 
+      <div
         style={{
           position: 'absolute',
           bottom: 0,
@@ -64,7 +64,7 @@ export default function InputArea({ onSend, disabled }: Props) {
       />
 
       {/* Input container */}
-      <div 
+      <div
         style={{
           maxWidth: '724px',
           width: '100%',

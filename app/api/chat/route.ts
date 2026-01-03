@@ -37,6 +37,7 @@ export async function POST(req: Request) {
     const payload = {
       model: model || "gpt-5.1",
       messages,
+      stream: true, // Enable streaming
     };
 
     const upstream = await fetch(`${BASE_URL}/v1/chat/completions`, {
@@ -48,16 +49,51 @@ export async function POST(req: Request) {
       body: JSON.stringify(payload),
     });
 
-    const data = await upstream.json();
-
     if (!upstream.ok) {
+      const errorData = await upstream.json();
       return NextResponse.json(
-        { error: "Upstream error", details: data },
+        { error: "Upstream error", details: errorData },
         { status: upstream.status }
       );
     }
 
-    return NextResponse.json(data);
+    // Create a streaming response
+    const stream = new ReadableStream({
+      async start(controller) {
+        const reader = upstream.body?.getReader();
+        const decoder = new TextDecoder();
+
+        if (!reader) {
+          controller.close();
+          return;
+        }
+
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+
+            if (done) {
+              controller.close();
+              break;
+            }
+
+            // Decode and forward the chunk
+            const chunk = decoder.decode(value, { stream: true });
+            controller.enqueue(new TextEncoder().encode(chunk));
+          }
+        } catch (error) {
+          controller.error(error);
+        }
+      },
+    });
+
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
   } catch (err) {
     return NextResponse.json(
       { error: "Request failed", details: String(err) },
