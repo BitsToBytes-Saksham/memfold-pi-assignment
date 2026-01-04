@@ -293,7 +293,7 @@ export default function Page() {
               </div>
             </div>
           ) : (
-            <div className="flex flex-col gap-6 max-w-4xl mx-auto">
+            <div className="flex flex-col gap-6 max-w-4xl mx-auto pt-12">
               {messages.map((m, idx) => (
                 <ChatBubble
                   key={idx}

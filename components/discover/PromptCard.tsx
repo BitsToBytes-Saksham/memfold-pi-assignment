@@ -29,7 +29,6 @@ export default function PromptCard({ title, image, size, index, onClick }: Props
         ease: [0.16, 1, 0.3, 1],
       }}
       whileHover={{
-        y: -2,
         scale: 1.01,
         transition: { duration: 0.2, ease: "easeOut" },
       }}
@@ -37,8 +36,8 @@ export default function PromptCard({ title, image, size, index, onClick }: Props
       onClick={onClick}
       className={`
         group relative rounded-2xl overflow-hidden
-        shadow-[0_2px_20px_rgba(0,0,0,0.08)]
-        hover:shadow-[0_8px_40px_rgba(0,0,0,0.16)]
+        shadow-[0_1px_8px_rgba(0,0,0,0.06),0_2px_4px_rgba(0,0,0,0.04)]
+        hover:shadow-[0_2px_12px_rgba(0,0,0,0.08),0_4px_8px_rgba(0,0,0,0.06)]
         transition-shadow duration-300
         ${sizeClasses[size]}
       `}
@@ -54,14 +53,14 @@ export default function PromptCard({ title, image, size, index, onClick }: Props
       />
 
       {/* Sophisticated gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent opacity-85 group-hover:opacity-90 transition-opacity duration-300" />
 
       {/* Vignette effect */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
 
       {/* Text with refined typography */}
-      <div className="absolute inset-0 flex items-end p-4">
-        <h3 className="font-serif text-[16px] leading-[1.2] font-medium text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
+      <div className="absolute inset-0 flex items-end p-5">
+        <h3 className="font-serif text-[18px] leading-[1.3] font-bold text-white/95 tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
           {title}
         </h3>
       </div>
